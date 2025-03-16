@@ -5,8 +5,9 @@ import { Trophy, Settings, Instagram, Facebook, Twitter } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 
 const Footer: React.FC = () => {
-  const { academyName, logo } = useAcademy();
+  const { academyName, logo, contactInfo, programs } = useAcademy();
   const year = new Date().getFullYear();
+  const isDevelopment = import.meta.env.DEV;
 
   return (
     <footer className="bg-chess-charcoal text-chess-ivory py-12">
@@ -71,37 +72,31 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <Link to="/settings" className="text-chess-ivory/70 hover:text-chess-gold transition-colors flex items-center">
-                    <Settings className="mr-1 h-3 w-3" />
-                    Settings
+                  <Link to="/admission" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
+                    Admission
                   </Link>
                 </li>
+                {isDevelopment && (
+                  <li>
+                    <Link to="/settings" className="text-chess-ivory/70 hover:text-chess-gold transition-colors flex items-center">
+                      <Settings className="mr-1 h-3 w-3" />
+                      Settings
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
             
             <div>
               <h3 className="font-medium text-chess-ivory mb-4">Programs</h3>
               <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
-                    Beginners
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
-                    Intermediate
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
-                    Advanced
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
-                    Private Lessons
-                  </a>
-                </li>
+                {programs.map((program) => (
+                  <li key={program.id}>
+                    <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
+                      {program.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             
@@ -109,16 +104,16 @@ const Footer: React.FC = () => {
               <h3 className="font-medium text-chess-ivory mb-4">Contact</h3>
               <ul className="space-y-2 text-sm">
                 <li className="text-chess-ivory/70">
-                  123 Chess Street
+                  {contactInfo.address}
                 </li>
                 <li className="text-chess-ivory/70">
-                  New York, NY 10001
+                  {contactInfo.city} {contactInfo.zipCode}
                 </li>
                 <li className="text-chess-ivory/70">
-                  info@chessacademy.com
+                  {contactInfo.email}
                 </li>
                 <li className="text-chess-ivory/70">
-                  (123) 456-7890
+                  {contactInfo.phone}
                 </li>
               </ul>
             </div>

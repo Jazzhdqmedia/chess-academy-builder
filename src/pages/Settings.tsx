@@ -1,11 +1,14 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Trophy, Upload, X, Camera, User } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import ProgramSettings from "@/components/ProgramSettings";
+import ContactSettings from "@/components/ContactSettings";
+import FormSettings from "@/components/FormSettings";
 
 const Settings: React.FC = () => {
   const navigate = useNavigate();
@@ -25,6 +28,24 @@ const Settings: React.FC = () => {
   const [nameInput, setNameInput] = useState(academyName);
   const [masterNameInput, setMasterNameInput] = useState(masterInfo.name);
   const [masterBioInput, setMasterBioInput] = useState(masterInfo.bio);
+  const isDevelopment = import.meta.env.DEV;
+
+  // Redirect if not in development mode
+  useEffect(() => {
+    if (!isDevelopment) {
+      navigate('/');
+      toast({
+        title: "Access restricted",
+        description: "Settings are only available in development mode",
+        variant: "destructive"
+      });
+    }
+  }, [isDevelopment, navigate, toast]);
+
+  // Return early if not in development mode
+  if (!isDevelopment) {
+    return null;
+  }
 
   const handleSaveAcademyInfo = () => {
     setAcademyName(nameInput);
@@ -209,6 +230,15 @@ const Settings: React.FC = () => {
                 </div>
               </div>
             </section>
+            
+            {/* Contact Information */}
+            <ContactSettings />
+            
+            {/* Program Settings */}
+            <ProgramSettings />
+            
+            {/* Form Settings */}
+            <FormSettings />
             
             {/* Master Information */}
             <section className="chess-card">

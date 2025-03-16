@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Trophy } from "lucide-react";
+import { Trophy, Crown, Flag, ChevronDown } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 
 const Hero: React.FC = () => {
@@ -19,6 +19,17 @@ const Hero: React.FC = () => {
         <Trophy className="w-96 h-96 text-chess-charcoal" />
       </div>
       
+      {/* Added more floating chess pieces */}
+      <div className="absolute top-1/4 right-1/4 opacity-10 animate-chess-float" style={{ animationDelay: "1.5s" }}>
+        <Crown className="w-24 h-24 text-chess-gold" />
+      </div>
+      <div className="absolute bottom-1/3 left-1/3 opacity-10 animate-chess-float" style={{ animationDelay: "2s" }}>
+        <Flag className="w-20 h-20 text-chess-mahogany" />
+      </div>
+      
+      {/* Chess board decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 opacity-5 bg-chess-pattern rounded"></div>
+      
       <div className="chess-container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-block animate-fade-in">
@@ -33,12 +44,10 @@ const Hero: React.FC = () => {
             Elevate your game with expert instruction from experienced masters.
             Our academy offers personalized training programs for players of all levels.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "300ms" }}>
-            <a href="#about" className="chess-btn-primary px-6 py-3">
+          <div className="flex justify-center items-center animate-fade-up" style={{ animationDelay: "300ms" }}>
+            <a href="#about" className="chess-btn-primary px-6 py-3 flex items-center gap-2">
               Discover More
-            </a>
-            <a href="#gallery" className="chess-btn-outline px-6 py-3">
-              View Gallery
+              <ChevronDown className="h-4 w-4" />
             </a>
           </div>
         </div>

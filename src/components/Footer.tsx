@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChessKnight, Settings, Instagram, Facebook, Twitter } from "lucide-react";
+import { Trophy, Settings, Instagram, Facebook, Twitter } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 
 const Footer: React.FC = () => {
@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
               {logo ? (
                 <img src={logo} alt={academyName} className="h-10 w-auto invert" />
               ) : (
-                <ChessKnight className="h-8 w-8 text-chess-gold" />
+                <Trophy className="h-8 w-8 text-chess-gold" />
               )}
               <span className="text-xl font-serif font-medium">
                 {academyName}

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChessKnight, Settings } from "lucide-react";
+import { Menu, X, Trophy, Settings } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 import { cn } from "@/lib/utils";
 
@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
             {logo ? (
               <img src={logo} alt={academyName} className="h-10 w-auto" />
             ) : (
-              <ChessKnight className="h-8 w-8 text-chess-mahogany" />
+              <Trophy className="h-8 w-8 text-chess-mahogany" />
             )}
             <span className="text-xl font-serif font-medium tracking-tight">
               {academyName}

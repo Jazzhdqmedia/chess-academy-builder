@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChessKnight, Upload, X, Camera, User } from "lucide-react";
+import { Trophy, Upload, X, Camera, User } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -169,7 +169,7 @@ const Settings: React.FC = () => {
                       {logo ? (
                         <img src={logo} alt="Academy logo" className="w-full h-full object-contain" />
                       ) : (
-                        <ChessKnight className="h-12 w-12 text-chess-charcoal/30" />
+                        <Trophy className="h-12 w-12 text-chess-charcoal/30" />
                       )}
                     </div>
                     <div className="space-y-3">

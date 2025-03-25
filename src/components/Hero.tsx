@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Trophy, Crown, Flag, ChevronDown } from "lucide-react";
+import { ChessKnight } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 
 const Hero: React.FC = () => {
@@ -13,22 +13,11 @@ const Hero: React.FC = () => {
       
       {/* Floating chess pieces decoration */}
       <div className="absolute -top-20 -right-20 opacity-5 animate-chess-float">
-        <Trophy className="w-96 h-96 text-chess-mahogany" />
+        <ChessKnight className="w-96 h-96 text-chess-mahogany" />
       </div>
       <div className="absolute -bottom-20 -left-20 opacity-5 animate-chess-float animation-delay-1000">
-        <Trophy className="w-96 h-96 text-chess-charcoal" />
+        <ChessKnight className="w-96 h-96 text-chess-charcoal" />
       </div>
-      
-      {/* Added more floating chess pieces */}
-      <div className="absolute top-1/4 right-1/4 opacity-10 animate-chess-float" style={{ animationDelay: "1.5s" }}>
-        <Crown className="w-24 h-24 text-chess-gold" />
-      </div>
-      <div className="absolute bottom-1/3 left-1/3 opacity-10 animate-chess-float" style={{ animationDelay: "2s" }}>
-        <Flag className="w-20 h-20 text-chess-mahogany" />
-      </div>
-      
-      {/* Chess board decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 opacity-5 bg-chess-pattern rounded"></div>
       
       <div className="chess-container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -44,10 +33,12 @@ const Hero: React.FC = () => {
             Elevate your game with expert instruction from experienced masters.
             Our academy offers personalized training programs for players of all levels.
           </p>
-          <div className="flex justify-center items-center animate-fade-up" style={{ animationDelay: "300ms" }}>
-            <a href="#about" className="chess-btn-primary px-6 py-3 flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "300ms" }}>
+            <a href="#about" className="chess-btn-primary px-6 py-3">
               Discover More
-              <ChevronDown className="h-4 w-4" />
+            </a>
+            <a href="#gallery" className="chess-btn-outline px-6 py-3">
+              View Gallery
             </a>
           </div>
         </div>

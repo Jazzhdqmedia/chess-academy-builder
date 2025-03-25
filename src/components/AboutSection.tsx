@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useAcademy } from "@/context/AcademyContext";
-import { GraduationCap, Flag, Target, Book, User } from "lucide-react";
+import { GraduationCap, ChessPawn, Target, Book, User } from "lucide-react";
 
 const AboutSection: React.FC = () => {
   const { masterInfo } = useAcademy();

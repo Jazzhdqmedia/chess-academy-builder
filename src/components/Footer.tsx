@@ -1,13 +1,12 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Trophy, Settings, Instagram, Facebook, Twitter } from "lucide-react";
+import { ChessKnight, Settings, Instagram, Facebook, Twitter } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 
 const Footer: React.FC = () => {
-  const { academyName, logo, contactInfo, programs } = useAcademy();
+  const { academyName, logo } = useAcademy();
   const year = new Date().getFullYear();
-  const isDevelopment = import.meta.env.DEV;
 
   return (
     <footer className="bg-chess-charcoal text-chess-ivory py-12">
@@ -18,7 +17,7 @@ const Footer: React.FC = () => {
               {logo ? (
                 <img src={logo} alt={academyName} className="h-10 w-auto invert" />
               ) : (
-                <Trophy className="h-8 w-8 text-chess-gold" />
+                <ChessKnight className="h-8 w-8 text-chess-gold" />
               )}
               <span className="text-xl font-serif font-medium">
                 {academyName}
@@ -72,31 +71,37 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
                 <li>
-                  <Link to="/admission" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
-                    Admission
+                  <Link to="/settings" className="text-chess-ivory/70 hover:text-chess-gold transition-colors flex items-center">
+                    <Settings className="mr-1 h-3 w-3" />
+                    Settings
                   </Link>
                 </li>
-                {isDevelopment && (
-                  <li>
-                    <Link to="/settings" className="text-chess-ivory/70 hover:text-chess-gold transition-colors flex items-center">
-                      <Settings className="mr-1 h-3 w-3" />
-                      Settings
-                    </Link>
-                  </li>
-                )}
               </ul>
             </div>
             
             <div>
               <h3 className="font-medium text-chess-ivory mb-4">Programs</h3>
               <ul className="space-y-2 text-sm">
-                {programs.map((program) => (
-                  <li key={program.id}>
-                    <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
-                      {program.title}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
+                    Beginners
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
+                    Intermediate
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
+                    Advanced
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-chess-ivory/70 hover:text-chess-gold transition-colors">
+                    Private Lessons
+                  </a>
+                </li>
               </ul>
             </div>
             
@@ -104,16 +109,16 @@ const Footer: React.FC = () => {
               <h3 className="font-medium text-chess-ivory mb-4">Contact</h3>
               <ul className="space-y-2 text-sm">
                 <li className="text-chess-ivory/70">
-                  {contactInfo.address}
+                  123 Chess Street
                 </li>
                 <li className="text-chess-ivory/70">
-                  {contactInfo.city} {contactInfo.zipCode}
+                  New York, NY 10001
                 </li>
                 <li className="text-chess-ivory/70">
-                  {contactInfo.email}
+                  info@chessacademy.com
                 </li>
                 <li className="text-chess-ivory/70">
-                  {contactInfo.phone}
+                  (123) 456-7890
                 </li>
               </ul>
             </div>

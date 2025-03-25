@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ChessKnight } from "lucide-react";
+import { Trophy } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 
 const Hero: React.FC = () => {
@@ -13,10 +13,10 @@ const Hero: React.FC = () => {
       
       {/* Floating chess pieces decoration */}
       <div className="absolute -top-20 -right-20 opacity-5 animate-chess-float">
-        <ChessKnight className="w-96 h-96 text-chess-mahogany" />
+        <Trophy className="w-96 h-96 text-chess-mahogany" />
       </div>
       <div className="absolute -bottom-20 -left-20 opacity-5 animate-chess-float animation-delay-1000">
-        <ChessKnight className="w-96 h-96 text-chess-charcoal" />
+        <Trophy className="w-96 h-96 text-chess-charcoal" />
       </div>
       
       <div className="chess-container relative z-10">

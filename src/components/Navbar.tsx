@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Trophy, Settings } from "lucide-react";
@@ -12,7 +11,6 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const isDevelopment = import.meta.env.DEV;
 
-  // Handle scroll event for navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -22,7 +20,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
-  // Close mobile menu when route changes
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -36,7 +33,6 @@ const Navbar: React.FC = () => {
     >
       <div className="chess-container">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             {logo ? (
               <img src={logo} alt={academyName} className="h-10 w-auto" />
@@ -48,7 +44,6 @@ const Navbar: React.FC = () => {
             </span>
           </Link>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="nav-link">Home</Link>
             <a href="#about" className="nav-link">About</a>
@@ -65,7 +60,6 @@ const Navbar: React.FC = () => {
             )}
           </div>
           
-          {/* Mobile Menu Toggle */}
           <button 
             className="md:hidden p-2 focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -79,7 +73,6 @@ const Navbar: React.FC = () => {
           </button>
         </div>
         
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden pt-4 pb-2 animate-fade-down">
             <div className="flex flex-col space-y-4">

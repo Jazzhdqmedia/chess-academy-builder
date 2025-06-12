@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Trophy, Settings } from "lucide-react";
@@ -8,35 +7,9 @@ import { cn } from "@/lib/utils";
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { academyName, logo, isLoading } = useAcademy();
+  const { academyName, logo } = useAcademy();
   const location = useLocation();
-  
-  // Check admin login status
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const checkAdminStatus = () => {
-      const adminStatus = localStorage.getItem("isAdminLoggedIn") === "true";
-      setIsAdminLoggedIn(adminStatus);
-    };
-    
-    checkAdminStatus();
-    
-    // Listen for storage changes
-    const handleStorageChange = () => {
-      checkAdminStatus();
-    };
-    
-    window.addEventListener('storage', handleStorageChange);
-    
-    // Also check on focus (for same-tab changes)
-    window.addEventListener('focus', checkAdminStatus);
-    
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('focus', checkAdminStatus);
-    };
-  }, []);
+  const isAdminLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,13 +34,13 @@ const Navbar: React.FC = () => {
       <div className="chess-container">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3">
-            {!isLoading && logo ? (
+            {logo ? (
               <img src={logo} alt={academyName} className="h-10 w-auto" />
             ) : (
               <Trophy className="h-8 w-8 text-chess-mahogany" />
             )}
             <span className="text-xl font-serif font-medium tracking-tight">
-              {isLoading ? "Loading..." : academyName}
+              {academyName}
             </span>
           </Link>
           

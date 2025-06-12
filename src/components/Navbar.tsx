@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Trophy, Settings } from "lucide-react";
@@ -10,6 +9,7 @@ const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { academyName, logo } = useAcademy();
   const location = useLocation();
+  const isAdminLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,11 +50,11 @@ const Navbar: React.FC = () => {
             <a href="#gallery" className="nav-link">Gallery</a>
             <Link to="/admission" className="nav-link">Admission</Link>
             <Link 
-              to="/settings" 
+              to={isAdminLoggedIn ? "/settings" : "/admin-login"}
               className="flex items-center space-x-1 nav-link"
             >
               <Settings className="h-4 w-4" />
-              <span>Settings</span>
+              <span>Admin</span>
             </Link>
           </div>
           
@@ -79,11 +79,11 @@ const Navbar: React.FC = () => {
               <a href="#gallery" className="nav-link-mobile">Gallery</a>
               <Link to="/admission" className="nav-link-mobile">Admission</Link>
               <Link 
-                to="/settings" 
+                to={isAdminLoggedIn ? "/settings" : "/admin-login"}
                 className="flex items-center space-x-2 nav-link-mobile"
               >
                 <Settings className="h-4 w-4" />
-                <span>Settings</span>
+                <span>Admin</span>
               </Link>
             </div>
           </div>

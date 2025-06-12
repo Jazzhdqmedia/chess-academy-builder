@@ -4,7 +4,31 @@ import { useAcademy } from "@/context/AcademyContext";
 import { Image } from "lucide-react";
 
 const GallerySection: React.FC = () => {
-  const { galleryImages } = useAcademy();
+  const { galleryImages, isLoading } = useAcademy();
+
+  if (isLoading) {
+    return (
+      <section id="gallery" className="py-20 scroll-mt-20">
+        <div className="chess-container">
+          <div className="flex flex-col items-center mb-16 text-center">
+            <div className="animate-pulse">
+              <div className="h-6 bg-chess-light/50 rounded mb-4 w-20 mx-auto"></div>
+              <div className="h-10 bg-chess-light/50 rounded mb-4 w-64 mx-auto"></div>
+              <div className="h-1 bg-chess-light/50 rounded w-16 mx-auto mb-4"></div>
+              <div className="h-4 bg-chess-light/50 rounded w-96 mx-auto"></div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="animate-pulse">
+                <div className="bg-chess-light/50 h-64 rounded-lg"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="gallery" className="py-20 scroll-mt-20">
@@ -32,6 +56,10 @@ const GallerySection: React.FC = () => {
                   alt={`Gallery image ${index + 1}`}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
+                  onError={(e) => {
+                    console.error(`Failed to load gallery image ${index + 1}:`, image);
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-chess-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-4 text-chess-ivory">

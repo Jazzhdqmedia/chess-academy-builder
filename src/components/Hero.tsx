@@ -4,7 +4,28 @@ import { Trophy } from "lucide-react";
 import { useAcademy } from "@/context/AcademyContext";
 
 const Hero: React.FC = () => {
-  const { academyName } = useAcademy();
+  const { academyName, isLoading } = useAcademy();
+
+  if (isLoading) {
+    return (
+      <section className="relative pt-28 pb-20 md:pt-36 md:pb-32 overflow-hidden">
+        <div className="chess-container relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="animate-pulse">
+              <div className="h-8 bg-chess-light/50 rounded mb-6 mx-auto w-32"></div>
+              <div className="h-16 bg-chess-light/50 rounded mb-6"></div>
+              <div className="h-6 bg-chess-light/50 rounded mb-4"></div>
+              <div className="h-6 bg-chess-light/50 rounded mb-8 w-3/4 mx-auto"></div>
+              <div className="flex justify-center gap-4">
+                <div className="h-12 bg-chess-light/50 rounded w-32"></div>
+                <div className="h-12 bg-chess-light/50 rounded w-32"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="relative pt-28 pb-20 md:pt-36 md:pb-32 overflow-hidden">

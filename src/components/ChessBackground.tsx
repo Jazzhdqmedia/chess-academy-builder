@@ -1,7 +1,7 @@
 
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Sphere, Box } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 const ChessPiece: React.FC<{ position: [number, number, number]; type: 'pawn' | 'knight' | 'bishop' | 'rook' | 'queen' | 'king' }> = ({ position, type }) => {
@@ -17,19 +17,19 @@ const ChessPiece: React.FC<{ position: [number, number, number]; type: 'pawn' | 
   const pieceGeometry = useMemo(() => {
     switch (type) {
       case 'pawn':
-        return <Sphere args={[0.3, 8, 6]} />;
+        return <sphereGeometry args={[0.3, 8, 6]} />;
       case 'rook':
-        return <Box args={[0.4, 0.6, 0.4]} />;
+        return <boxGeometry args={[0.4, 0.6, 0.4]} />;
       case 'bishop':
-        return <Sphere args={[0.25, 8, 6]} />;
+        return <sphereGeometry args={[0.25, 8, 6]} />;
       case 'knight':
-        return <Box args={[0.3, 0.5, 0.3]} />;
+        return <boxGeometry args={[0.3, 0.5, 0.3]} />;
       case 'queen':
-        return <Sphere args={[0.35, 8, 6]} />;
+        return <sphereGeometry args={[0.35, 8, 6]} />;
       case 'king':
-        return <Box args={[0.4, 0.7, 0.4]} />;
+        return <boxGeometry args={[0.4, 0.7, 0.4]} />;
       default:
-        return <Sphere args={[0.3, 8, 6]} />;
+        return <sphereGeometry args={[0.3, 8, 6]} />;
     }
   }, [type]);
 

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -29,12 +30,12 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				chess: {
-					ivory: '#F8F5F0',
-					charcoal: '#2D2B2C',
-					mahogany: '#8C3130',
-					gold: '#D9B777',
-					light: '#E8E0D5',
-					dark: '#3A3837',
+					ivory: 'hsl(var(--foreground))',
+					charcoal: 'hsl(var(--background))',
+					mahogany: 'hsl(var(--primary))',
+					gold: 'hsl(var(--primary))',
+					light: 'hsl(var(--muted-foreground))',
+					dark: 'hsl(var(--card))',
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -137,8 +138,7 @@ export default {
 				'piece-dance': 'piece-dance 6s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'chess-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' fill='%23E8E0D5' opacity='0.4'/%3E%3Crect x='30' width='30' height='30' fill='%232D2B2C' opacity='0.2'/%3E%3Crect y='30' width='30' height='30' fill='%232D2B2C' opacity='0.2'/%3E%3Crect x='30' y='30' width='30' height='30' fill='%23E8E0D5' opacity='0.4'/%3E%3C/svg%3E\")",
-				'chess-gradient': 'linear-gradient(135deg, #2D2B2C 0%, #3A3837 25%, #8C3130 50%, #D9B777 75%, #F8F5F0 100%)'
+				'chess-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' fill='%23242428' opacity='0.4'/%3E%3Crect x='30' width='30' height='30' fill='%2318181B' opacity='0.2'/%3E%3Crect y='30' width='30' height='30' fill='%2318181B' opacity='0.2'/%3E%3Crect x='30' y='30' width='30' height='30' fill='%23242428' opacity='0.4'/%3E%3C/svg%3E\")",
 			}
 		}
 	},

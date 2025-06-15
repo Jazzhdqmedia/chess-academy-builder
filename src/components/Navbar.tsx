@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Trophy, Settings } from "lucide-react";
@@ -28,16 +29,16 @@ const Navbar: React.FC = () => {
     <nav 
       className={cn(
         "fixed w-full z-50 transition-all duration-300",
-        isScrolled || mobileMenuOpen ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+        isScrolled || mobileMenuOpen ? "bg-chess-dark/80 backdrop-blur-sm shadow-lg py-2" : "bg-transparent py-4"
       )}
     >
       <div className="chess-container">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3 text-chess-ivory">
             {logo ? (
               <img src={logo} alt={academyName} className="h-10 w-auto" />
             ) : (
-              <Trophy className="h-8 w-8 text-chess-mahogany" />
+              <Trophy className="h-8 w-8 text-chess-gold" />
             )}
             <span className="text-xl font-serif font-medium tracking-tight">
               {academyName}
@@ -59,14 +60,14 @@ const Navbar: React.FC = () => {
           </div>
           
           <button 
-            className="md:hidden p-2 focus:outline-none"
+            className="md:hidden p-2 focus:outline-none text-chess-ivory"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-chess-charcoal" />
+              <X className="h-6 w-6" />
             ) : (
-              <Menu className="h-6 w-6 text-chess-charcoal" />
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -98,13 +97,32 @@ export default {
 					from: { opacity: '0', transform: 'translateY(20px)' },
 					to: { opacity: '1', transform: 'translateY(0)' }
 				},
+				'fade-down': {
+					from: { opacity: '0', transform: 'translateY(-20px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
+				},
 				'chess-float': {
-					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-10px)' }
+					'0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+					'25%': { transform: 'translateY(-10px) rotate(90deg)' },
+					'50%': { transform: 'translateY(-5px) rotate(180deg)' },
+					'75%': { transform: 'translateY(-15px) rotate(270deg)' }
 				},
 				'chess-pulse': {
-					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.7' }
+					'0%, 100%': { opacity: '0.7', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.05)' }
+				},
+				'chess-glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 5px rgba(217, 183, 119, 0.3)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 20px rgba(217, 183, 119, 0.6), 0 0 30px rgba(217, 183, 119, 0.4)' 
+					}
+				},
+				'piece-dance': {
+					'0%, 100%': { transform: 'translateY(0) rotateY(0deg)' },
+					'33%': { transform: 'translateY(-8px) rotateY(120deg)' },
+					'66%': { transform: 'translateY(-4px) rotateY(240deg)' }
 				}
 			},
 			animation: {
@@ -112,11 +130,15 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'fade-up': 'fade-up 0.8s ease-out',
-				'chess-float': 'chess-float 6s ease-in-out infinite',
-				'chess-pulse': 'chess-pulse 3s ease-in-out infinite'
+				'fade-down': 'fade-down 0.6s ease-out',
+				'chess-float': 'chess-float 8s ease-in-out infinite',
+				'chess-pulse': 'chess-pulse 4s ease-in-out infinite',
+				'chess-glow': 'chess-glow 3s ease-in-out infinite',
+				'piece-dance': 'piece-dance 6s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'chess-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='%23E8E0D5'/%3E%3Crect x='20' width='20' height='20' fill='%233A3837'/%3E%3Crect y='20' width='20' height='20' fill='%233A3837'/%3E%3Crect x='20' y='20' width='20' height='20' fill='%23E8E0D5'/%3E%3C/svg%3E\")",
+				'chess-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' fill='%23E8E0D5' opacity='0.4'/%3E%3Crect x='30' width='30' height='30' fill='%232D2B2C' opacity='0.2'/%3E%3Crect y='30' width='30' height='30' fill='%232D2B2C' opacity='0.2'/%3E%3Crect x='30' y='30' width='30' height='30' fill='%23E8E0D5' opacity='0.4'/%3E%3C/svg%3E\")",
+				'chess-gradient': 'linear-gradient(135deg, #2D2B2C 0%, #3A3837 25%, #8C3130 50%, #D9B777 75%, #F8F5F0 100%)'
 			}
 		}
 	},

@@ -45,7 +45,7 @@
   }
 
   body {
-    @apply bg-chess-ivory text-chess-charcoal font-sans;
+    @apply bg-gradient-to-br from-chess-ivory via-chess-light to-chess-ivory text-chess-charcoal font-sans;
     overflow-x: hidden;
   }
 
@@ -64,26 +64,104 @@
   }
   
   .chess-btn {
-    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
   }
   
   .chess-btn-primary {
-    @apply chess-btn bg-chess-charcoal text-chess-ivory hover:bg-chess-dark;
+    @apply chess-btn bg-gradient-to-r from-chess-charcoal to-chess-dark text-chess-ivory hover:from-chess-dark hover:to-chess-charcoal shadow-lg hover:shadow-xl transform hover:scale-105;
   }
   
   .chess-btn-secondary {
-    @apply chess-btn bg-chess-mahogany text-chess-ivory hover:bg-opacity-90;
+    @apply chess-btn bg-gradient-to-r from-chess-mahogany to-chess-mahogany/80 text-chess-ivory hover:from-chess-mahogany/90 hover:to-chess-mahogany shadow-lg hover:shadow-xl transform hover:scale-105;
   }
   
   .chess-btn-outline {
-    @apply chess-btn border border-chess-charcoal bg-transparent hover:bg-chess-light;
+    @apply chess-btn border-2 border-chess-charcoal bg-transparent hover:bg-chess-charcoal/10 backdrop-blur-sm shadow-md hover:shadow-lg transform hover:scale-105;
   }
   
   .chess-input {
-    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200;
   }
   
   .chess-card {
-    @apply rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md;
+    @apply rounded-lg border border-border bg-gradient-to-br from-card to-card/80 p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm;
   }
+
+  .nav-link {
+    @apply text-chess-charcoal hover:text-chess-mahogany transition-all duration-200 font-medium relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-chess-mahogany transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link-mobile {
+    @apply text-chess-charcoal hover:text-chess-mahogany transition-colors duration-200 font-medium py-2;
+  }
+}
+
+/* Enhanced chess-themed animations */
+@keyframes chess-piece-float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-10px) rotate(90deg); 
+  }
+  50% { 
+    transform: translateY(-5px) rotate(180deg); 
+  }
+  75% { 
+    transform: translateY(-15px) rotate(270deg); 
+  }
+}
+
+@keyframes chess-board-pulse {
+  0%, 100% { 
+    opacity: 0.1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.05); 
+  }
+}
+
+@keyframes chess-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(217, 183, 119, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(217, 183, 119, 0.6), 0 0 30px rgba(217, 183, 119, 0.4); 
+  }
+}
+
+.animate-chess-piece-float {
+  animation: chess-piece-float 8s ease-in-out infinite;
+}
+
+.animate-chess-board-pulse {
+  animation: chess-board-pulse 4s ease-in-out infinite;
+}
+
+.animate-chess-glow {
+  animation: chess-glow 3s ease-in-out infinite;
+}
+
+/* Animation delays for staggered effects */
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
 }
